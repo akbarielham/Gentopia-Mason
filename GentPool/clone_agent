@@ -24,7 +24,7 @@ clone_dir_path="./gentpool/pool/${clone_agent}"
 
 echo "Cloning agent ${base_agent} to ${clone_agent}, continue? (y/n)"
 read answer
-answer == y
+answer = y
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     # Copy the entire base agent directory to the clone agent directory
