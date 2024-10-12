@@ -24,4 +24,5 @@ plugins:
   - name: search_single_paper
   - name: search_related_paper
   - name: search_cite_paper
+  - name: google_search 
   - name: write_file
