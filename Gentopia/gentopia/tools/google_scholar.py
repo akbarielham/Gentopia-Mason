@@ -22,6 +22,9 @@ class SearchAuthorByName(BaseTool):
 
     def _run(self, author: AnyStr, top_k: int = 5) -> str:
         if author != self.author:
+            pg = ProxyGenerator()
+            pg.FreeProxies()
+            scholarly.use_proxy(pg)
             self.results = scholarly.search_author(author)
         self.author = author
         assert self.results is not None
@@ -98,6 +101,9 @@ class AuthorUID2Paper(BaseTool):
 
     def _run(self, uid: AnyStr, sort_by: AnyStr, top_k: int = 5) -> str:
         if uid != self.uid or sort_by != self.sort_by:
+            pg = ProxyGenerator()
+            pg.FreeProxies()
+            scholarly.use_proxy(pg)
             author = scholarly.search_author_id(uid)
             author = scholarly.fill(author, sortby=sort_by)
             self.results = iter(author['publications'])
@@ -141,6 +147,9 @@ class SearchPaper(BaseTool):
 
     def _run(self, title: AnyStr, sort_by: AnyStr, top_k: int = 5) -> str:
         if title != self.title or sort_by != self.sort_by:
+            pg = ProxyGenerator()
+            pg.FreeProxies()
+            scholarly.use_proxy(pg)
             self.results = scholarly.search_pubs(title, sort_by=sort_by)
         self.title = title
         self.sort_by = sort_by
